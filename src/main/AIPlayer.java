@@ -1,8 +1,6 @@
 package main;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class AIPlayer extends Player {
 
