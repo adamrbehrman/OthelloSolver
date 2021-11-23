@@ -17,14 +17,14 @@ public class AIPlayer extends Player {
 		for (Move move : possibleMoves) {
 			// Automatically take corner moves
 			if (gb.isCorner(move.getDisc().getCoords())) {
-				System.out.println("***************\n\n\n" + move);
+//				System.out.println("***************\n\n\n" + move);
 				return gb.makeMove(move);
 			} else if (gb.isBadSquare(move)) {
 				// Bad moves should be avoided
 				move.setPlayScore(move.getPlayScore() - .99);
 			}
 		}
-		
+
 		for (Move move : possibleMoves) {
 			move = this.returnMoveScore(gb, move);
 		}
@@ -48,16 +48,17 @@ public class AIPlayer extends Player {
 		for (Move move : possibleMoves) {
 			System.out.println(move);
 		}
-		
+
 		for (Move move : possibleMoves) {
-			if (gb.isPerfectlyQuietMove(move, gb.getPossibleMoves(Math.abs(color - 3)).size()) && (!gb.isCSquare(move.getDisc().getCoords()) && !gb.isXSquare(move.getDisc().getCoords()))) {
-				System.out.println("***************\n\n\n" + move);
+			if (gb.isPerfectlyQuietMove(move, gb.getPossibleMoves(Math.abs(color - 3)).size())
+					&& (!gb.isCSquare(move.getDisc().getCoords()) && !gb.isXSquare(move.getDisc().getCoords()))) {
+//				System.out.println("***************\n\n\n" + move);
 				return gb.makeMove(move);
 			}
 		}
 
 		if (possibleMoves != null && !possibleMoves.isEmpty()) {
-			System.out.println("***************\n\n\n" + possibleMoves.get(0));
+//			System.out.println("***************\n\n\n" + possibleMoves.get(0));
 			return gb.makeMove(possibleMoves.get(0));
 		} else {
 			return gb.makeMove(new Move(new Disc(new CustomPoint(-1, -1), color)));
@@ -101,7 +102,7 @@ public class AIPlayer extends Player {
 			}
 
 			// Future Moves:
-			
+
 			// Wedges: .06
 			int wedges = gb.wedgesAdded(move, color);
 			// System.out.println(wedges);
@@ -146,7 +147,7 @@ public class AIPlayer extends Player {
 	 */
 	private Move runSimulations(GameBoard copyGB, Move move, int color, int times, int index) {
 		move = this.returnMoveScore(copyGB, move);
-		System.out.println(move);
+//		System.out.println(move);
 
 		// Catch after scoring
 		if (index > times) {
